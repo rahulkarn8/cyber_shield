@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { Shield, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/img/daifend_logo.png";
 
 export default function Navbar() {
   const [location] = useLocation();
@@ -28,10 +29,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-2 cursor-pointer"
             >
-              <div className="w-8 h-8 bg-gradient-to-r from-cyber-blue to-cyber-purple rounded-lg flex items-center justify-center">
-                <Shield className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-2xl font-bold">Daifend</span>
+              <img src={logo} alt="Daifend" style={{height: '80px'}} />
             </motion.div>
           </Link>
 
