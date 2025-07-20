@@ -9,6 +9,7 @@ import Offerings from "@/pages/offerings";
 import Research from "@/pages/research";
 import LiveThreats from "@/pages/live-threats";
 import Resources from "@/pages/resources";
+import Contacts from "@/pages/contacts";
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/research" component={Research} />
       <Route path="/live-threats" component={LiveThreats} />
       <Route path="/resources" component={Resources} />
+      <Route path="/contacts" component={Contacts} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -14,7 +14,7 @@ export default function Navbar() {
     { name: "Research", href: "/research" },
     { name: "Live Threats", href: "/live-threats" },
     { name: "Resources", href: "/resources" },
-    { name: "Contacts", href: "/contacts" },
+    { name: "Contact", href: "/contacts" },
   ];
 
   return (
@@ -51,9 +51,9 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center space-x-4">
-            <Button className="hidden md:block bg-primary hover:bg-primary/90">
+            {/* <Button className="hidden md:block bg-primary hover:bg-primary/90">
               Book Demo
-            </Button>
+            </Button> */}
             <Button
               variant="ghost"
               size="icon"
@@ -86,9 +86,9 @@ export default function Navbar() {
                   </span>
                 </Link>
               ))}
-              <Button className="w-full bg-primary hover:bg-primary/90 mt-4">
+              {/* <Button className="w-full bg-primary hover:bg-primary/90 mt-4">
                 Book Demo
-              </Button>
+              </Button> */}
             </div>
           </motion.div>
         )}

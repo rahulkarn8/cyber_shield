@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { Mail, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Navbar from "@/components/navbar";
 
 export default function ContactUs() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <Navbar />
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20" />
