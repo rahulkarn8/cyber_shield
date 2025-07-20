@@ -14,6 +14,7 @@ export default function Navbar() {
     { name: "Research", href: "/research" },
     { name: "Live Threats", href: "/live-threats" },
     { name: "Resources", href: "/resources" },
+    { name: "Contacts", href: "/contacts" },
   ];
 
   return (
