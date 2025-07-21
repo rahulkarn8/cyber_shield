@@ -1,18 +1,42 @@
-// server.js
-const express = require('express');
-const path = require('path');
+require("dotenv").config();
+
+const express = require("express");
+const path = require("path");
+const { Client } = require("pg");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
-// Serve static files from dist/public
-app.use(express.static(path.join(__dirname, 'dist/public')));
-
-// Handle client-side routing (SPA fallback)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/public', 'index.html'));
+// ✅ Setup PostgreSQL connection
+const db = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, // Required for NeonDB
+  },
 });
 
-app.listen(port, () => {
-  console.log(`🚀 Server running on port ${port}`);
+db.connect()
+  .then(() => console.log("✅ Connected to PostgreSQL"))
+  .catch((err) => console.error("❌ PostgreSQL connection error:", err));
+
+// ✅ Health check endpoint
+app.get("/health", async (req, res) => {
+  try {
+    const result = await db.query("SELECT NOW()");
+    res.status(200).json({ status: "ok", time: result.rows[0].now });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ✅ Serve React static files from build
+app.use(express.static(path.join(__dirname, "dist", "public")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "public", "index.html"));
+});
+
+// ✅ Start the server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
